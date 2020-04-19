@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="jumbotron">
+  {% if session['logged_in'] %}
+  <p>Oh no Dont show page</p>
+  {% else %}
+
+  <h2>회원가입</h2>
+  <form class="form-horizontal" action="/register/" method="POST">
+    <div class="row">
+      <div class="container">
+        <div class="col-sm-10">
+          <div class="form-group">
+            <label for="exampleInputEmail1">UserID</label>
+            <input type="text" class="form-control" name="username" placeholder="UserID">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" class="form-control" name="password" placeholder="Password">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">회사명</label>
+            <input type="text" class="form-control" name="cName" placeholder="회사명">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">대표자명</label>
+            <input type="text" class="form-control" name="cUsername" placeholder="대표자명">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputEmail1">사업자등록번호</label>
+            <input type="text" class="form-control" name="cNumber" placeholder="사업자등록번호(-포함 입력)">
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">사업장 주소</label>
+            <input type="text" class="form-control" name="cAddress" placeholder="사업장 주소">
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">등록</button>
+        </div>
+      </div>
+    </div>
+  </form>
+  <br>
+
+  {% endif %}
+</div>
+{% endblock %}

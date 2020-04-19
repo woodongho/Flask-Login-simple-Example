@@ -1,0 +1,154 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+{% if data %}
+<h3>{{data}}</h3>
+{% else %}
+<div class="jumbotron">
+	<!-- <a href="/logout">Logout</a> <br> <br> -->
+	<h1 class="display-4">본 서비스는</h1>
+	<p class="lead">
+		<h3>&nbsp;중소기업의 근로계약서와 연봉계약서 자동 작성을 지원합니다.</h3>
+	</p>
+	</form>
+	<hr class="my-4">
+	<p class="lead">
+		<div class="container">
+			<div class="row">
+				<div class="col">
+					<a class="btn btn-primary btn-lg" href="/hInformationInput" role="button">근로자 정보 신규
+						등록&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+					<p></p>
+					<a class="btn btn-primary btn-lg" href="#" role="button">근로자 정보
+						변경&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</a>
+				</div>
+				<div class="col">
+					<a class="btn btn-primary btn-lg" href="#" role="button">근로계약서(최초입사시 작성)</a>
+					<p></p>
+					<a class="btn btn-primary btn-lg" href="#" role="button">연봉계약서(연봉변경시 작성)</a>
+				</div>
+			</div>
+		</div>
+	</p>
+</div>
+<hr class="my-4">
+<div>
+	<p class="lead">
+		<button id="btn-posting-box" onclick="openclose()" type="button" class="btn btn-primary">사용 방법 닫기</button>
+	</p>
+</div>
+<div>
+	<div id="post-box" class="form-post">
+		<div>
+			<div class="form-group">
+				<h5>
+					<p>1. 회원가입시 안내에 따라 귀 사업장의 사업자정보를 입력합니다.</p>
+					<p>2. 로그인 후 근로자 등록 버튼을 눌러 안내에 따라 귀 사업장의 근로자 정보를 입력합니다. 수정은 근로자 정보 변경 버튼을 누릅니다.</p>
+					<p>3. 근로계약서 및 연봉계약서 버튼을 눌러 필요한 근로계약서 및 연봉계약서를 작성후 인쇄 또는 파일로 저장하여 사용합니다.</p>
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="line_border">
+	<hr class="my-4">
+</div>
+<div class="alert alert-dark" role="alert">
+
+	<p>우호택스앤파트너스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		대표
+		우동호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		사업자등록번호 138-07-43939</p>
+	<p>대표전화
+		031-613-6000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		팩스 031-613-6609</p>
+	<p>주소 경기도 화성시 동탄중심상가2길 26-15 702호(반송동, 지성프라자)</p>
+	COPYRIGHTⓒ2020 UHOTAX&PARTNERS. ALL RIGHTS RESERVED
+</div>
+</div>
+{% endif %}
+
+{% else %}
+<p>Not login!</p>
+
+<div class="jumbotron">
+	<h1 class="display-4">본 서비스는</h1>
+	<p class="lead">
+		<h3>&nbsp;중소기업의 근로계약서와 연봉계약서 자동 작성을 지원합니다. 로그인 후 이용할 수 있습니다.</h3>
+	</p>
+	<hr class="my-4">
+	</form>
+	<h2>로그인</h2>
+	<form class="form-horizontal" action="/login" method="POST">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="username">UserID:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="username" placeholder="Enter userID">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" name="password" placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary btn-block">로그인</button>
+			</div>
+		</div>
+	</form>
+
+	<br>
+	<div>
+		Don't have an account?
+		<button type="submit" class="btn btn-primary" onclick="location.href={{ url_for('register') }}">회원가입</button>
+
+	</div>
+</div>
+<hr class="my-4">
+<div>
+	<p class="lead">
+		<button id="btn-posting-box" onclick="openclose()" type="button" class="btn btn-primary">사용 방법 닫기</button>
+	</p>
+</div>
+<div>
+	<div id="post-box" class="form-post">
+		<div>
+			<div class="form-group">
+				<h5>
+					<p>1. 회원가입시 안내에 따라 귀 사업장의 사업자정보를 입력합니다.</p>
+					<p>2. 로그인 후 근로자 등록 버튼을 눌러 안내에 따라 귀 사업장의 근로자 정보를 입력합니다. 수정은 근로자 정보 변경 버튼을 누릅니다.</p>
+					<p>3. 근로계약서 및 연봉계약서 버튼을 눌러 필요한 근로계약서 및 연봉계약서를 작성후 인쇄 또는 파일로 저장하여 사용합니다.</p>
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="my-4">
+<div class="alert alert-dark" role="alert">
+	<p>우호택스앤파트너스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		대표
+		우동호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		사업자등록번호 138-07-43939</p>
+	<p>대표전화
+		031-613-6000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		팩스 031-613-6609</p>
+	<p>주소 경기도 화성시 동탄중심상가2길 26-15 702호(반송동, 지성프라자)</p>
+	COPYRIGHTⓒ2020 UHOTAX&PARTNERS. ALL RIGHTS RESERVED
+</div>
+</div>
+
+
+
+
+{% endif %}
+{% endblock %}

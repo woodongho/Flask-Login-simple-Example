@@ -1,0 +1,700 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<script>
+
+    //입력된 숫자를 텍스트로 바꿔주는 함수 작동확인할 것
+    function numberToText(num) {
+        num = Number(num);
+        return string(num);
+    }
+
+
+
+    var arrNumberWord = new Array("", "일", "이", "삼", "사", "오", "육", "칠", "팔", "구");
+    var arrDigitWord = new Array("", "십", "백", "천");
+    var arrManWord = new Array("", "만", "억", "조");
+
+    function fn_change_hangul_money(txt_id) {
+        var num_value = txt_id.value;
+        var num_length = num_value.length;
+        if (isNaN(num_value) == true)
+            return;
+        var han_value = "";
+        var man_count = 0;      // 만단위 0이 아닌 금액 카운트.
+        for (i = 0; i < num_value.length; i++) {
+            // 1단위의 문자로 표시.. (0은 제외)
+            var strTextWord = arrNumberWord[num_value.charAt(i)];
+            // 0이 아닌경우만, 십/백/천 표시
+            if (strTextWord != "") {
+                man_count++;
+                strTextWord += arrDigitWord[(num_length - (i + 1)) % 4];
+            }
+            // 만단위마다 표시 (0인경우에도 만단위는 표시한다)
+            if (man_count != 0 && (num_length - (i + 1)) % 4 == 0) {
+                man_count = 0;
+                strTextWord = strTextWord + arrManWord[(num_length - (i + 1)) / 4];
+            }
+            han_value += strTextWord;
+        }
+        if (num_value != 0)
+            han_value = "금 " + han_value + " 원";
+        document.all.han_money.innerText = han_value;
+    }
+
+    function fn_change_hangul_money1(txt_id) {
+        var num_value = txt_id.value;
+        var num_length = num_value.length;
+        if (isNaN(num_value) == true)
+            return;
+        var han_value = "";
+        var man_count = 0;      // 만단위 0이 아닌 금액 카운트.
+        for (i = 0; i < num_value.length; i++) {
+            // 1단위의 문자로 표시.. (0은 제외)
+            var strTextWord = arrNumberWord[num_value.charAt(i)];
+            // 0이 아닌경우만, 십/백/천 표시
+            if (strTextWord != "") {
+                man_count++;
+                strTextWord += arrDigitWord[(num_length - (i + 1)) % 4];
+            }
+            // 만단위마다 표시 (0인경우에도 만단위는 표시한다)
+            if (man_count != 0 && (num_length - (i + 1)) % 4 == 0) {
+                man_count = 0;
+                strTextWord = strTextWord + arrManWord[(num_length - (i + 1)) / 4];
+            }
+            han_value += strTextWord;
+        }
+        if (num_value != 0)
+            han_value = "금 " + han_value + " 원";
+        document.all.han_money1.innerText = han_value;
+    }
+
+    function fn_change_hangul_money2(txt_id) {
+        var num_value = txt_id.value;
+        var num_length = num_value.length;
+        if (isNaN(num_value) == true)
+            return;
+        var han_value = "";
+        var man_count = 0;      // 만단위 0이 아닌 금액 카운트.
+        for (i = 0; i < num_value.length; i++) {
+            // 1단위의 문자로 표시.. (0은 제외)
+            var strTextWord = arrNumberWord[num_value.charAt(i)];
+            // 0이 아닌경우만, 십/백/천 표시
+            if (strTextWord != "") {
+                man_count++;
+                strTextWord += arrDigitWord[(num_length - (i + 1)) % 4];
+            }
+            // 만단위마다 표시 (0인경우에도 만단위는 표시한다)
+            if (man_count != 0 && (num_length - (i + 1)) % 4 == 0) {
+                man_count = 0;
+                strTextWord = strTextWord + arrManWord[(num_length - (i + 1)) / 4];
+            }
+            han_value += strTextWord;
+        }
+        if (num_value != 0)
+            han_value = "금 " + han_value + " 원";
+        document.all.han_money2.innerText = han_value;
+    }
+
+    function fn_change_hangul_money3(txt_id) {
+        var num_value = txt_id.value;
+        var num_length = num_value.length;
+        if (isNaN(num_value) == true)
+            return;
+        var han_value = "";
+        var man_count = 0;      // 만단위 0이 아닌 금액 카운트.
+        for (i = 0; i < num_value.length; i++) {
+            // 1단위의 문자로 표시.. (0은 제외)
+            var strTextWord = arrNumberWord[num_value.charAt(i)];
+            // 0이 아닌경우만, 십/백/천 표시
+            if (strTextWord != "") {
+                man_count++;
+                strTextWord += arrDigitWord[(num_length - (i + 1)) % 4];
+            }
+            // 만단위마다 표시 (0인경우에도 만단위는 표시한다)
+            if (man_count != 0 && (num_length - (i + 1)) % 4 == 0) {
+                man_count = 0;
+                strTextWord = strTextWord + arrManWord[(num_length - (i + 1)) / 4];
+            }
+            han_value += strTextWord;
+        }
+        if (num_value != 0)
+            han_value = "금 " + han_value + " 원";
+        document.all.han_money3.innerText = han_value;
+    }
+
+    function fn_change_hangul_money4(txt_id) {
+        var num_value = txt_id.value;
+        var num_length = num_value.length;
+        if (isNaN(num_value) == true)
+            return;
+        var han_value = "";
+        var man_count = 0;      // 만단위 0이 아닌 금액 카운트.
+        for (i = 0; i < num_value.length; i++) {
+            // 1단위의 문자로 표시.. (0은 제외)
+            var strTextWord = arrNumberWord[num_value.charAt(i)];
+            // 0이 아닌경우만, 십/백/천 표시
+            if (strTextWord != "") {
+                man_count++;
+                strTextWord += arrDigitWord[(num_length - (i + 1)) % 4];
+            }
+            // 만단위마다 표시 (0인경우에도 만단위는 표시한다)
+            if (man_count != 0 && (num_length - (i + 1)) % 4 == 0) {
+                man_count = 0;
+                strTextWord = strTextWord + arrManWord[(num_length - (i + 1)) / 4];
+            }
+            han_value += strTextWord;
+        }
+        if (num_value != 0)
+            han_value = "금 " + han_value + " 원";
+        document.all.han_money4.innerText = han_value;
+    }
+
+    // $(document).ready(function () {
+
+    //     // 입력란에 입력을 하면 입력내용에 내용이 출력
+    //     // 1. #data 공간에서 keyup이라는 이벤트가 발생했을 때
+
+    //     $("#hYearSalaryInput").keyup(function () {
+
+    //         // 2. #out 공간에 #data의 내용이 출력된다.
+    //         $("#out").text($("#hYearSalaryInput").val());
+
+    //         // #out의 위치에 text로 데이터를 받는다.(setter)
+    //         // 들어가는 데이터는 #data의 값(.val())이다. (getter)
+    //         // 메서드 괄호 안에 아무것도 없으면 getter, 파라미터가 있으면 setter이다.
+
+    //     });
+
+    // });
+
+
+    //숫자 세자리 마다 , 찍어주는 함수 
+    function hcomma(obj) {
+        obj.value = comma(uncomma(obj.value));
+    }
+
+    function comma(str) {
+        str = String(str);
+        return str.replace(/(\d)(?=(?:\d{3})+(?!\d))/g, '$1,');
+    }
+
+    // ,를 없애주는 함수
+    function uncomma(str) {
+        str = String(str);
+        return str.replace(/[^\d]+/g, '');
+    }
+    //제대로 된 핸드폰 번호 체크 함수
+    function correct_phone(p) {
+        var regExp = /^(01[016789]{1}|02|0[3-9]{1}[0-9]{1})[-][0-9]{3,4}[-][0-9]{4}$/;
+        return regExp.test(p);
+    }
+
+
+    // 콤마를 제거하는 함수. 인자로 받은 문자열에서 쉼표가 있을 경우 이를 빈 문자로 치환해준후 리턴해줍니다.
+    // 1,000,000 => 1000000
+    // 이렇게 되면 숫자로 변환했을 때도 NaN이 되지 않습니다.
+    function removeComma(str) {
+        return str.replace(/\,/g, '')
+    }
+
+    function hRegistration() {
+        let name = $('#hName').val();
+        let number = $('#hNumber').val();
+        let address = $('#hAddress').val();
+        let registrationNumber = $('#hRegistrationNumber').val();
+        let startdate = $('#hStartDate').val();
+        let department = $('#hDepartment').val();
+        let position = $('#hPosition').val();
+        let task = $('#hTask').val();
+        let birthday = $('#hBirthday').val();
+        let gender = $('#hGender').val();
+        let phoneNumber = $('#hPhoneNumber').val();
+        let accountNumber = $('#hAccountNumber').val();
+        let yearSalaryInput = $('#hYearSalaryInput').val();
+        let meal = $('#hMeal').val();
+        let carCost = $('#hCarCost').val();
+        let childcareAllowance = $('#hChildcareAllowance').val();
+        let otherAllowance = $('#hOtherAllowance').val();
+        let monthlyWorkingHour = $('#hMonthlyWorkingHour').val();
+        let monthlyOvertime = $('#hMonthlyOvertime').val();
+        let dailyWorkingHourStart = $('#hDailyWorkingHourStart').val();
+        let dailyWorkingHourEnd = $('#hDailyWorkingHourEnd').val();
+        let breakTimeStart = $('#hBreakTimeStart').val();
+        let breakTimeEnd = $('#hBreakTimeEnd').val();
+
+
+        // 문자열을 숫자로 변환
+        // 신록. 숫자에 콤마를 넣어줬기 때문에 바로 숫자로 변환할 경우 NaN(not a number)로 인삭하게 됩니다. 콤마를 제거한 후 숫자로 만들어주는 작업이 필요합니다.
+        // 네 자리 이상의 수를 입력했을 경우 이 로그에서 콤마를 확인할 수 있습니다.
+        // console.log(yearSalaryInput)
+
+        // yearSalaryInput = Number(removeComma(yearSalaryInput));
+        // meal = Number(removeComma(meal));
+        // carCost = Number(removeComma(carCost));
+        // childcareAllowance = Number(removeComma(childcareAllowance));
+        // otherAllowance = Number(removeComma(otherAllowance));
+        // monthlyWorkingHour = Number(removeComma(monthlyWorkingHour));
+        // monthlyOvertime = Number(removeComma(monthlyOvertime));
+
+        // yearSalaryInput = Integer.parseInt(yearSalaryInput);
+        // meal = Integer.parseInt(meal);
+        // carCost = Integer.parseInt(carCost);
+        // childcareAllowance = Integer.parseInt(childcareAllowance);
+        // otherAllowance = Integer.parseInt(otherAllowance);
+        // monthlyWorkingHour = Integer.parseInt(monthlyWorkingHour);
+        // monthlyOvertime = Integer.parseInt(monthlyOvertime);
+
+
+        if (name == '') {
+            alert('이름을 입력해주세요.')
+            $('#hName').focus()
+            return
+            // } else if (registrationNumber == '') {
+            //     alert('주민등록번호를 입력해주세요.')
+            //     $('#hRegistrationNumber').focus()
+            //     return
+        } else if (startdate == '') {
+            alert('입사일자를 입력해주세요.')
+            $('#hStartDate').focus()
+            return
+            // } else if (phoneNumber == '') {
+            //     alert('휴대폰번호를 입력해주세요')
+            //     $('#hPhoneNumber').focus()
+            //     return
+            // } else if (!correct_phone(phoneNumber)) {
+            //     alert('휴대폰번호 입력 형식이 틀립니다. \n 010-0000-0000으로 입력해 주세요.')
+            //     return
+        } else if (yearSalaryInput == '') {
+            alert('연봉을 입력해주세요.')
+            $('#hYearSalaryInput').focus()
+            return
+        } else if (meal == '') {
+            alert('식대를 입력해주세요.')
+            $('#hMeal').focus()
+            return
+        } else if (carCost == '') {
+            alert('차량유지비를 입력해주세요.')
+            $('#hCarCost').focus()
+            return
+        } else if (childcareAllowance == '') {
+            alert('자녀양육수당을 입력해주세요.')
+            $('#hChildcareAllowance').focus()
+            return
+        } else if (otherAllowance == '') {
+            alert('기타수당을 입력해주세요.')
+            $('#hOtherAllowance').focus()
+            return
+        } else if (dailyWorkingHourStart == '') {
+            alert('월소정 근로시간을 입력해주세요.')
+            $('#hDailyWorkingHourStart').focus()
+            return
+        } else if (monthlyOvertime == '') {
+            alert('월고정 연장시간을 입력해주세요.')
+            $('#hMonthlyOvertime').focus()
+            return
+        } else if (dailyWorkingHourStart == '') {
+            alert('일 근로시작 시간을 입력해주세요.')
+            $('#hDailyWorkingHourStart').focus()
+            return
+        } else if (dailyWorkingHourEnd == '') {
+            alert('일 근로마감 시간을 입력해주세요.')
+            $('#hDailyWorkingHourEnd').focus()
+            return
+        } else if (breakTimeStart == '') {
+            alert('휴게시작 시간을 입력해주세요. 8시간 근무시 1시간을 정하게 되어 있습니다.')
+            $('#hBreakTimeStart').focus()
+            return
+        } else if (breakTimeEnd == '') {
+            alert('휴게마감 시간을 입력해주세요. 8시간 근무시 1시간을 정하게 되어 있습니다.')
+            $('#hBreakTimeEnd').focus()
+            return
+        }
+
+        //  else if (!correct_minimumHourlyWage(hHourlyWage)) {
+        //     if (hHourlyWage < minimumHourlyWage)
+        //         alert('최저시급 위반입니다. 올해 최저시급은 8,590원 입니다. 비과세 급여를 줄이거나 월고정연장근로시간을 줄이세요.')
+        //     $('#hMonthlyOvertime').focus()
+        //     return
+
+
+        //시급 계산기
+
+        // 신록. 아래의 연봉계산처럼 변수를 사용하여 연산을 하셔야 합니다.
+        let hHourlyWage = (yearSalaryInput / 12 - meal - carCost - childcareAllowance - otherAllowance) / (monthlyWorkingHour + (monthlyOvertime * 1.5))
+
+
+        //확정월급 및 확정연봉 등 계산기
+        let hMonthlyBasicSalary = (hHourlyWage * monthlyWorkingHour);
+        let hMonthlyOvertimeAllowance = (hHourlyWage * monthlyOvertime);
+        let hMonthlyTotalSalrary = (hMonthlyBasicSalary + hMonthlyOvertimeAllowance + meal + carCost + childcareAllowance + otherAllowance);
+        let hYearSalary = (hMonthlyTotalSalrary * 12);
+        let hMothlySalary = hMonthlyTotalSalrary;
+        let hMonthlyTotalWorkingHour = (hMonthlyWorkingHour + hMonthlyOvertime);
+
+
+        // make_card(name, yearSalaryInput, hHourlyWage, hYearSalary, hMothlySalary)
+
+        // $.ajax({
+        //     type: "POST",
+        //     url: "/registrations",
+        //     data: { name_give: name, yearSalaryInput_give: yearSalaryInput, hHourlyWage_give: hHourlyWage, hYearSalary_give: hYearSalary, hMothlySalary_give: hMothlySalary },
+        //     success: function (response) {
+        //         if (response['result'] == 'success') {
+        //             alert(response['msg']);
+        //             $('#hName').val('');
+        //             $('#hYearSalaryInput').val('');
+        //             $('#hHourlyWage').val('');
+        //             $('#hYearSalary').val('');
+        //             $('#hMothlySalary').val('')
+        //             window.location.reload();
+        //         }
+        //     }
+        // })
+
+
+        $.ajax({
+            type: "POST",
+            url: "/registrations",
+            data: {
+                name_give: name, yearSalaryInput_give: yearSalaryInput, hHourlyWage_give: hHourlyWage, hYearSalary_give: hYearSalary, hMothlySalary_give: hMothlySalary,
+                name_give: name, yearSalaryInput_give: yearSalaryInput, hHourlyWage_give: hHourlyWage, hYearSalary_give: hYearSalary, hMothlySalary_give: hMothlySalary,
+                name_give: name, yearSalaryInput_give: yearSalaryInput, hHourlyWage_give: hHourlyWage, hYearSalary_give: hYearSalary, hMothlySalary_give: hMothlySalary,
+                name_give: name, yearSalaryInput_give: yearSalaryInput, hHourlyWage_give: hHourlyWage, hYearSalary_give: hYearSalary, hMothlySalary_give: hMothlySalary,
+           },
+            success: function (response) {
+                if (response['result'] == 'success') {
+                    alert(response['msg']);
+                    $('#hName').val('');
+                    $('#hYearSalaryInput').val('');
+                    $('#hHourlyWage').val('');
+                    $('#hYearSalary').val('');
+                    $('#hMothlySalary').val('')
+                    window.location.reload();
+                }
+            }
+        })
+    }
+
+    //당해년도(2020년) 최저시급
+    var minimumHourlyWage = parseInt("8590");
+
+    //최저 시급 계산기(원래)
+    function correct_minimumHourlyWage() {
+        var hHourlyWage = parseInt("(yearSalaryInput / 12 - meal - carCost - childcareAllowance - otherAllowance) / (monthlyWorkingHour + (monthlyOvertime * 1.5))");
+        if (hHourlyWage < minimumHourlyWage) {
+            alert('최저시급 위반입니다. 올해 최저시급은 8,590원 입니다. 비과세 급여를 줄이거나 월고정연장근로시간을 줄이세요.')
+            $('#hMonthlyOvertime').focus()
+            return
+        }
+    }
+
+
+    // //최저 시급 계산기
+    // function correct_minimumHourlyWage(p) {
+    //     var hHourlyWage = (yearSalaryInput / 12 - meal - carCost - childcareAllowance - otherAllowance) / (monthlyWorkingHour + (monthlyOvertime * 1.5));
+    //     return regExp1.test(p);
+    // }
+
+
+
+    // $(document).ready(function () {
+    //     $('hRegistration-box').html('');
+    //     listing();
+    // });
+
+    // function listing() {
+    //     $.ajax({
+    //         type: "GET",
+    //         url: "/registrations",
+    //         data: {},
+    //         success: function (response) {
+    //             if (response['result'] == 'success') {
+    //                 let registrations = response['registrations'];
+    //                 for (let i = 0; i < registrations.length; i++) {
+    //                     make_card(registrations[i]['name'], registrations[i]['yearSalaryInput'], registrations[i]['hHourlyWage'], registrations[i]['hYearSalary'], registrations[i]['hMothlySalary'])
+    //                 }
+    //             } else {
+    //                 alert('자료를 받아오지 못했습니다!');
+    //             }
+    //         }
+    //     })
+    // }
+
+    // function make_card(name, yearSalaryInput, hHourlyWage, hYearSalary, hMothlySalary) {
+    //     let temp_html = '<tr>\
+    //             <td>' + name + '</td>\
+    //             <td>' + yearSalaryInput + '</td>\
+    //             <td>' + hHourlyWage + '</td>\
+    //             <td>' + hYearSalary + '</td>\
+    //             <td>' + hMothlySalary + '</td>\
+    //             </tr>';
+    //     $('#hRegistration-box').append(temp_html);
+
+    //     clear()
+    // }
+    // function clear() {
+    //     $('#hName').val('')
+    //     $('#hYearSalaryInput').val('')
+    //     $('#hHourlyWage').val('')
+    //     $('#hYearSalary').val('')
+    //     $('#hMothlySalary').val('')
+    // }
+
+</script>
+
+
+<div class="jumbotron">
+    <h1 class="display-4">신규사원등록</h1>
+    <p class="lead">
+        <h3>&nbsp;새로 입사한 직원의 정확한 정보를 입력합니다. 이는 근로계약서 및 연봉계약서, 급여대장 등에 영향을 미칩니다.(*)필수입력</h3>
+    </p>
+    <hr class="my-4">
+    <p>
+        <div>
+            <div class="box_size1 centered">
+                <div class="input-group mb-3">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text" id="basic-addon1">
+                            <h6>성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;명*:
+                            </h6>
+                        </span>
+                    </div>
+                    <input type="text" class="form-control" id="hName">
+                </div>
+                <div class="input-group mb-3">
+                    <div class="box_size1 centered">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    <h6>사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번
+                                        :&nbsp;
+                                    </h6>
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="hNumber">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="hAddress">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    주&nbsp;민&nbsp;등&nbsp;록&nbsp;번호*:
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="-포함해서 입력" id="hRegistrationNumber">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    입&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;사&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일*:
+                                </span>
+                            </div>
+                            <input type="date" class="form-control" id="hStartDate">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    근&nbsp;&nbsp;&nbsp;&nbsp;무&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부&nbsp;&nbsp;&nbsp;&nbsp;서
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="hDepartment">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;위
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="부장 / 과장 등" id="hPosition">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;무
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="총무 / 영업 등" id="hTask">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    생&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;일
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="date" class="form-control" id="hBirthday">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <label class="input-group-text" for="inputGroupSelect01">
+                                    성&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;별
+                                    :&nbsp;
+                                </label>
+                            </div>
+                            <select class="custom-select" id="order_count">
+                                <option selected value>
+                                    성별 선택
+                                </option>
+                                <option value="1">남</option>
+                                <option value="2">녀</option>
+                            </select>
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    휴&nbsp;&nbsp;대&nbsp;&nbsp;폰&nbsp;&nbsp;&nbsp;&nbsp;번호*:
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" placeholder="-포함해서 입력" id="hPhoneNumber">
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    계&nbsp;&nbsp;&nbsp;&nbsp;좌&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;번&nbsp;&nbsp;&nbsp;&nbsp;호
+                                    :&nbsp;
+                                </span>
+                            </div>
+                            <input type="text" class="form-control" id="hAccountNumber">
+                        </div>
+                        <hr class="my-4">
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1">
+                                    연&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;봉*:
+                                </span>
+                            </div>
+                            <input class="form-control numberToText comma" type="number"
+                                style="width:100px;text-align:right;" placeholder="단위 (원)" id="hYearSalaryInput"
+                                onkeyup="fn_change_hangul_money(this);"><span class=" han_money"
+                                id="han_money">금액표시</span>
+
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                식&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;대*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="월 10만원까지 비과세" id="hMeal" max="100000"
+                            onkeyup="fn_change_hangul_money1(this);"><span class=" han_money1"
+                            id="han_money1">금액표시</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                자가차량유지비*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="자차일 경우 월 20만원까지 비과세" id="hCarCost" max="200000"
+                            onkeyup="fn_change_hangul_money2(this);" /><span class=" han_money2"
+                            id="han_money2">금액표시</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                출산및육아수당*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="2014이후 출생 자녀 有 월 10만원까지 비과세" id="hChildcareAllowance" max="100000"
+                            onkeyup="fn_change_hangul_money3(this);"><span class=" han_money3"
+                            id="han_money3">금액표시</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                기&nbsp;&nbsp;&nbsp;&nbsp;타&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수&nbsp;&nbsp;&nbsp;&nbsp;당*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="기타 과세 수당 자유롭게 입력가능" id="hOtherAllowance"
+                            onkeyup="fn_change_hangul_money4(this);"><span class=" han_money4"
+                            id="han_money4">금액표시</span>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                월소정근로시간*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="주5일 8시간 근무인 경우 209시간, 209시간 초과 불가" id="hMonthlyWorkingHour" max="209" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                월고정연장시간*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="number" style="width:100px;text-align:right;"
+                            placeholder="계산되는 시급의 1.5배 지급해야 하며, 최대62시간 입력 가능" id="hMonthlyOvertime" max="62" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                근&nbsp;&nbsp;&nbsp;&nbsp;로&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시&nbsp;&nbsp;&nbsp;&nbsp;간*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="time" style="width:100px;text-align:right;" placeholder="시작시간"
+                            id="hDailyWorkingHourStart" />&nbsp;&nbsp;~&nbsp;&nbsp;
+                        <input class="form-control" type="time" style="width:100px;text-align:right;" placeholder="종료시간"
+                            id="hDailyWorkingHourEnd" />
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text" id="basic-addon1">
+                                휴&nbsp;&nbsp;&nbsp;&nbsp;게&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시&nbsp;&nbsp;&nbsp;&nbsp;간*:
+                            </span>
+                        </div>
+                        <input class="form-control" type="time" style="width:100px;text-align:right;" placeholder="시작시간"
+                            id="hBreakTimeStart" />&nbsp;&nbsp;~&nbsp;&nbsp;
+                        <input class="form-control" type="time" style="width:100px;text-align:right;" placeholder="종료시간"
+                            id="hBreakTimeEnd" />
+                    </div>
+
+
+
+
+                </div>
+            </div>
+            <button onclick="hRegistration()" type="button" class="btn btn-primary centered">
+                등록하기
+            </button>
+        </div>
+        <p></p>
+        <p></p>
+        <div class="registration">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">이름</th> <!-- 열의 상단 소제목을 정할 때 thead 사용 함-->
+                        <th scope="col">입력연봉</th>
+                        <th scope="col">계산시급</th>
+                        <th scope="col">확정연봉</th>
+                        <th scope="col">확정월급</th>
+                    </tr>
+                </thead>
+                <tbody id="hRegistration-box"></tbody>
+            </table>
+        </div>
+</div>
+<hr class="my-4">
+<div class="line_border">
+    <hr class="my-4 vertical_center">
+</div>
+{% endblock %}
