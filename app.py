@@ -194,8 +194,7 @@ def login():
         try:
             data = User.query.filter_by(username=name, password=passw).first()
             if data is not None:
-                print(data)
-                session['user_id'] = data['id']
+                session['user_id'] = data.id
                 session['logged_in'] = True
                 return redirect(url_for('home'))
             else:
