@@ -144,6 +144,20 @@ class Human(db.Model):
 #         self.breakTimeEnd = breakTimeEnd
 #         self.user_id = user_id
 
+# def query_db(query, args=(), one=False):
+#     cur = g.db.execute(query, args)
+#     rv = [dict((cur.description[idx][0], value)
+#                for idx, value in enumerate(row)) for row in cur.fetchall()]
+#     return (rv[0] if rv else None) if one else rv
+#
+#
+# def get_user_id(username):
+#     rv = g.db.execute('select user_id from user where username = ?',
+#                        [username]).fetchone()
+#     return rv[0] if rv else None
+
+
+
 
 # route
 
@@ -180,6 +194,8 @@ def login():
         try:
             data = User.query.filter_by(username=name, password=passw).first()
             if data is not None:
+                print(data)
+                session['user_id'] = data['id']
                 session['logged_in'] = True
                 return redirect(url_for('home'))
             else:
@@ -220,7 +236,7 @@ def registrations():
                           dailyWorkingHourStart=request.form['hDailyWorkingHourStart'],
                           dailyWorkingHourEnd=request.form['hDailyWorkingHourEnd'],
                           breakTimeStart=request.form['hBreakTimeStart'], breakTimeEnd=request.form['hBreakTimeEnd'],
-                          )
+                          user_id=session['user_id'])
         db.session.add(new_human)
         db.session.commit()
         return render_template('hInformationInput.html')
