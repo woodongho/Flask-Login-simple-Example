@@ -1,0 +1,179 @@
+{% extends "base.html" %}
+{% block content %}
+{% if session['logged_in'] %}
+
+{% if data %}
+<h3>{{data}}</h3>
+{% else %}
+<div class="jumbotron"></div>
+<div class="wrapped">
+	<h3 class="display-4 align-center"><u>근로계약서</u></h3>
+	<hr class="my-4">
+	<h5><p>&nbsp;&nbsp;   (이하 “갑”이라 한다)와 근로자 <div class="btn-group">
+		<button type="button" class="btn btn-danger">근로자명</button>
+		<button type="button" class="btn btn-danger dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		  <span class="sr-only">Toggle Dropdown</span>
+		</button>
+		<div class="dropdown-menu">
+		  <a class="dropdown-item" href="#">Action</a>
+		  <a class="dropdown-item" href="#">Another action</a>
+		  <a class="dropdown-item" href="#">Something else here</a>
+		</div>
+	  </div>(이하 “을”이라 한다)은 다음과 같은 조건으로 근로계약을 체결하고, 
+	  상호신의의 원칙하에 성실하게 이행, 준수할 것을 서약하며, 이를 증명하기 위하여 
+	  본 계약서를 각1부씩 보관한다.</p><br>																	
+	<p class="align-center">- 다      음 -</p><br>
+	<p>제1조 (근로계약기간)</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;① <u>        </u> 부터 기한의 정함이 없는 근로계약을 체결한 것으로 한다.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;② 신규로 채용된 자는 입사한 날부터 3개월간을 수습기간으로 한다.</p><br>
+	<p>제2조 (근무장소 및 종사할 업무)</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;① 근무장소(부서, 직책) : <u>사업장소재지</u>,&nbsp;&nbsp;&nbsp;&nbsp;
+	<u>          </u> </p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;② 업무의 내용 : <u>          </u></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;단, “갑”은 업무의 필요에 따라 “을”의 업무내용을 변경할 수 있다.</p><br>
+	<p>제3조 (근로시간 및 휴게시간)</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;① 근로시간 : <u>  </u></p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;단, “갑”은 “을”에게  근로기준법 범위 내에서 시간외 근로를 명할 수 있으며, 이때 시간외 근로</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;수당의 계산방법은 연봉계약서에 의한다.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;② 휴게시간 : <u>   </u></p><br>
+	<p>제4조 (임금) 임금에 관한 사항은 별도로 체결되는 연봉계약서에 의한다.</p><br>
+	<p>제5조 (휴일 및 휴가)</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;① 1주 동안 소정근로일을 개근한 사원에 대하여는 일요일을 유급주휴일로 부여한다.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;② 기타 자세한 사항은 취업규칙 및 근로기준법에서 정하는 바에 의한다. </p><br>
+	<p>제6조 (비밀유지의무)</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;① “을”은 근무기간 중은 물론 근로계약종료 후에도 업무상 취득한 회사의 기밀을 유지하여야</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;한다.</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;② “을”이 위 제①항의 사항을 위반하여 “갑”에게 손해를 끼쳤을 경우에 "을"은 손해 전액을</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;“갑”에게 배상하여야 한다.</p><br>
+	<p>제7조 (손해배상) "을"의 고의 또는 중대한 과실로 회사에 손해를 입힌 경우 "을"은 이를 배상할</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;책임이 있다.</p><br>
+	<p>제8조 (기타사항) 본 계약에서 정하지 아니한 사항은 취업규칙, 노동관계법령 및 노사관행에</p>
+	<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;따른다.</p><br>
+	<br>
+	<div class="align-center"><h1> 몇년 몇월 </h1></div><br>
+	<div>
+		<table class="table" frame=void>
+				<tr>
+					<th scope="col">(갑)사용자 : </th>
+					<th scope="col">회사이름</th>
+					<th scope="col">대표이름</th>
+					<th scope="col">(인)</th>
+					<th scope="col">(을)근로자 : </th>
+					<th scope="col">직원이름</th>
+					<th scope="col">(인)</th>
+				</tr>
+			</table>
+		<table class="table" frame=void>
+				<tr>
+					<th scope="col">주소 : </th>
+					<th scope="col">회사주소</th>
+					<th scope="col"></th>
+					<th scope="col">주소 :</th>
+					<th scope="col">직원주소</th>
+				</tr>
+			</table>
+		<table class="table" frame=void>
+			<tr>
+				<th scope="col">사업자등록번호 : </th>
+				<th scope="col">사업자번호</th>
+				<th scope="col"></th>
+				<th scope="col">주민등록번호 :</th>
+				<th scope="col">직원번호</th>
+			</tr>
+		</table>
+	</div>
+
+
+
+
+
+
+
+
+</h5>
+</div>
+{% endif %}
+
+{% else %}
+<p>Not login!</p>
+
+<div class="jumbotron">
+	<h1 class="display-4">본 서비스는</h1>
+	<p class="lead">
+		<h3>&nbsp;중소기업의 근로계약서와 연봉계약서 자동 작성을 지원합니다. 로그인 후 이용할 수 있습니다.</h3>
+	</p>
+	<hr class="my-4">
+	</form>
+	<h2>로그인</h2>
+	<form class="form-horizontal" action="/login" method="POST">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="username">UserID:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="username" placeholder="Enter userID">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" name="password" placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary btn-block">로그인</button>
+			</div>
+		</div>
+	</form>
+
+	<br>
+	<div>
+		Don't have an account?
+		<button type="submit" class="btn btn-primary" onclick="location.href={{ url_for('register') }}">회원가입</button>
+
+	</div>
+</div>
+<hr class="my-4">
+<div>
+	<p class="lead">
+		<button id="btn-posting-box" onclick="openclose()" type="button" class="btn btn-primary">사용 방법 닫기</button>
+	</p>
+</div>
+<div>
+	<div id="post-box" class="form-post">
+		<div>
+			<div class="form-group">
+				<h5>
+					<p>1. 회원가입시 안내에 따라 귀 사업장의 사업자정보를 입력합니다.</p>
+					<p>2. 로그인 후 근로자 등록 버튼을 눌러 안내에 따라 귀 사업장의 근로자 정보를 입력합니다. 수정은 근로자 정보 변경 버튼을 누릅니다.</p>
+					<p>3. 근로계약서 및 연봉계약서 버튼을 눌러 필요한 근로계약서 및 연봉계약서를 작성후 인쇄 또는 파일로 저장하여 사용합니다.</p>
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="my-4">
+<div class="alert alert-dark" role="alert">
+	<p>우호택스앤파트너스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		대표
+		우동호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		사업자등록번호 138-07-43939</p>
+	<p>대표전화
+		031-613-6000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		팩스 031-613-6609</p>
+	<p>주소 경기도 화성시 동탄중심상가2길 26-15 702호(반송동, 지성프라자)</p>
+	COPYRIGHTⓒ2020 UHOTAX&PARTNERS. ALL RIGHTS RESERVED
+</div>
+</div>
+
+
+
+
+{% endif %}
+{% endblock %}

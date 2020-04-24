@@ -116,3 +116,12 @@
     height: auto;
     border-radius: 10px;
 }
+
+/* span 설정 */
+.span {
+    width: 100px;
+    height: 20px;
+    border: 1px solid;
+    padding: 5px;
+    margin: 10px
+}

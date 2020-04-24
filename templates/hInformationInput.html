@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 {% block content %}
-
+{% if session['logged_in'] %}
+{% if data %}
+<h3>{{data}}</h3>
+{% else %}
 
 <script>
 
@@ -201,10 +204,8 @@
         let otherAllowance = $('#hOtherAllowance').val();
         let monthlyWorkingHour = $('#hMonthlyWorkingHour').val();
         let monthlyOvertime = $('#hMonthlyOvertime').val();
-        let dailyWorkingHourStart = $('#hDailyWorkingHourStart').val();
-        let dailyWorkingHourEnd = $('#hDailyWorkingHourEnd').val();
-        let breakTimeStart = $('#hBreakTimeStart').val();
-        let breakTimeEnd = $('#hBreakTimeEnd').val();
+        let dailyWorkingHour = $('#hDailyWorkingHour').val();
+        let breakTime = $('#hBreakTime').val();
 
         // 빈칸 경고 메세지
         // if (name == '') {
@@ -413,8 +414,8 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소
-                                        :&nbsp;
+                                        주&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;소*
+                                        :
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" name="hAddress">
@@ -439,8 +440,8 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        근&nbsp;&nbsp;&nbsp;&nbsp;무&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;부&nbsp;&nbsp;&nbsp;&nbsp;서
-                                        :&nbsp;
+                                        근&nbsp;&nbsp;&nbsp;&nbsp;무&nbsp;&nbsp;&nbsp;&nbsp;부&nbsp;&nbsp;&nbsp;&nbsp;서
+                                        *:
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" name="hDepartment">
@@ -448,8 +449,8 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;위
-                                        :&nbsp;
+                                        직&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;위
+                                        *:
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="부장 / 과장 등" name="hPosition">
@@ -457,8 +458,8 @@
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
-                                        업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;무
-                                        :&nbsp;
+                                        업&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;무
+                                        *:
                                     </span>
                                 </div>
                                 <input type="text" class="form-control" placeholder="총무 / 영업 등" name="hTask">
@@ -505,6 +506,7 @@
                                 <input type="text" class="form-control" name="hAccountNumber">
                             </div>
                             <hr class="my-4">
+                           <h4> * 아래의 칸들은 반드시 다 채우세요. 해당 없는 부분은 0을 입력하세요.</h4>
                             <div class="input-group mb-3">
                                 <div class="input-group-prepend">
                                     <span class="input-group-text" id="basic-addon1">
@@ -578,7 +580,7 @@
                                 </span>
                             </div>
                             <input class="form-control" type="number" style="width:100px;text-align:right;"
-                                placeholder="계산되는 시급의 1.5배 지급해야 하며, 최대62시간 입력 가능" name="hMonthlyOvertime" max="62" />
+                                placeholder="계산되는 시급의 1.5배 지급해야 하며, 최대62시간 입력" name="hMonthlyOvertime" max="62" />
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -586,10 +588,7 @@
                                     근&nbsp;&nbsp;&nbsp;&nbsp;로&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시&nbsp;&nbsp;&nbsp;&nbsp;간*:
                                 </span>
                             </div>
-                            <input class="form-control" type="time" style="width:100px;text-align:right;"
-                                placeholder="시작시간" name="hDailyWorkingHourStart" />&nbsp;&nbsp;~&nbsp;&nbsp;
-                            <input class="form-control" type="time" style="width:100px;text-align:right;"
-                                placeholder="종료시간" name="hDailyWorkingHourEnd" />
+                            <input type="text" class="form-control" placeholder="평일 오전9시부터 오후6시까지 주5일 근무를 원칙으로 한다." name="hDailyWorkingHour">                       
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -597,19 +596,15 @@
                                     휴&nbsp;&nbsp;&nbsp;&nbsp;게&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;시&nbsp;&nbsp;&nbsp;&nbsp;간*:
                                 </span>
                             </div>
-                            <input class="form-control" type="time" style="width:100px;text-align:right;"
-                                placeholder="시작시간" name="hBreakTimeStart" />&nbsp;&nbsp;~&nbsp;&nbsp;
-                            <input class="form-control" type="time" style="width:100px;text-align:right;"
-                                placeholder="종료시간" name="hBreakTimeEnd" />
+                            <input type="text" class="form-control" placeholder="오후12시부터 오후1시까지의 60분으로 한다." name="hBreakTime">                       
                         </div>
-
                     </div>
                 </div>
                 <button onclick="hRegistration()" type="submit" class="btn btn-primary centered">등록하기</button>
             </div>
         </form>
 </div>
-<div class="registration">
+<!-- <div class="registration">
     <table class="table">
         <thead>
             <tr>
@@ -624,5 +619,87 @@
     </table>
 </div>
 </div>
+<hr class="my-4"> -->
+
+{% endif %}
+
+{% else %}
+<p>Not login!</p>
+
+<div class="jumbotron">
+	<h1 class="display-4">본 서비스는</h1>
+	<p class="lead">
+		<h3>&nbsp;중소기업의 근로계약서와 연봉계약서 자동 작성을 지원합니다. 로그인 후 이용할 수 있습니다.</h3>
+	</p>
+	<hr class="my-4">
+	</form>
+	<h2>로그인</h2>
+	<form class="form-horizontal" action="/login" method="POST">
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="username">UserID:</label>
+			<div class="col-sm-10">
+				<input type="text" class="form-control" name="username" placeholder="Enter userID">
+			</div>
+		</div>
+		<div class="form-group">
+			<label class="control-label col-sm-2" for="pwd">Password:</label>
+			<div class="col-sm-10">
+				<input type="password" class="form-control" name="password" placeholder="Enter password">
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<div class="checkbox">
+					<label><input type="checkbox"> Remember me</label>
+				</div>
+			</div>
+		</div>
+		<div class="form-group">
+			<div class="col-sm-offset-2 col-sm-10">
+				<button type="submit" class="btn btn-primary btn-block">로그인</button>
+			</div>
+		</div>
+	</form>
+
+	<br>
+	<div>
+		Don't have an account?
+		<button type="submit" class="btn btn-primary" onclick="location.href={{ url_for('register') }}">회원가입</button>
+
+	</div>
+</div>
 <hr class="my-4">
+<div>
+	<p class="lead">
+		<button id="btn-posting-box" onclick="openclose()" type="button" class="btn btn-primary">사용 방법 닫기</button>
+	</p>
+</div>
+<div>
+	<div id="post-box" class="form-post">
+		<div>
+			<div class="form-group">
+				<h5>
+					<p>1. 회원가입시 안내에 따라 귀 사업장의 사업자정보를 입력합니다.</p>
+					<p>2. 로그인 후 근로자 등록 버튼을 눌러 안내에 따라 귀 사업장의 근로자 정보를 입력합니다. 수정은 근로자 정보 변경 버튼을 누릅니다.</p>
+					<p>3. 근로계약서 및 연봉계약서 버튼을 눌러 필요한 근로계약서 및 연봉계약서를 작성후 인쇄 또는 파일로 저장하여 사용합니다.</p>
+				</h5>
+			</div>
+		</div>
+	</div>
+</div>
+<hr class="my-4">
+<div class="alert alert-dark" role="alert">
+	<p>우호택스앤파트너스&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		대표
+		우동호&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		사업자등록번호 138-07-43939</p>
+	<p>대표전화
+		031-613-6000&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		팩스 031-613-6609</p>
+	<p>주소 경기도 화성시 동탄중심상가2길 26-15 702호(반송동, 지성프라자)</p>
+	COPYRIGHTⓒ2020 UHOTAX&PARTNERS. ALL RIGHTS RESERVED
+</div>
+</div>
+
+{% endif %}
 {% endblock %}
