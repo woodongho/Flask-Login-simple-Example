@@ -182,7 +182,43 @@ def logout():
     session.clear()
     return redirect(url_for('home'))
 
+# # 회사명과 주소 user db로부터 땡겨오는 것
+# @app.route("/users/<cid>/companyName")
+# def get_users(id):
+#     user_data = User.query.filter_by(company_id=id).all()
+#     users = []
+#     for u in user_data:
+#         data = {
+#             "cid": u.id,
+#             "cName": u.cName,
+#             "cUsername": u.cUsername,
+#             "cNumber": u.cNumber,
+#             "cAddress": u.cAddress,
+#         }
+#         users.append(data)
+#     return jsonify(users)
 
+# # 회사명과 주소 user db로부터 땡겨오는 것
+# @app.route("/users/companyName")
+# def get_users(id):
+#     user_data = User.query.filter_by(company_name=cName)
+#     users = []
+#     for u in user_data:
+#         data = {
+#             "cName": u.cName,
+#         }
+#         users.append(data)
+#     return jsonify(users)
+
+# 회사명과 주소 user db로부터 가져와 출력
+# @app.route("/companyName")
+# def show_tables():
+#     queries = db.session.query(User)
+#     cName = [dict(cName=cName)]
+#     print(cName)
+
+
+# 신규 등록한 사원명 human db로부터 땡겨오는 것
 @app.route("/users/<id>/humans")
 def get_humans(id):
     human_data = Human.query.filter_by(user_id=id).all()
@@ -190,10 +226,34 @@ def get_humans(id):
     for h in human_data:
         data = {
             "id": h.Registration_id,
-            "name": h.name
+            "name": h.name,
+            "number": h.number,
+            "address": h.address,
+            "registrationNumber": h.registrationNumber,
+            "startdate": h.startdate,
+            "position": h.position,
+            "task": h.task,
+            "birthday": h.birthday,
+            "gender": h.gender,
+            "phoneNumber": h.phoneNumber,
+            "accountNumber": h.accountNumber,
+            "yearSalaryInput": h.yearSalaryInput,
+            "meal": h.meal,
+            "carCost": h.carCost,
+            "childcareAllowance": h.childcareAllowance,
+            "otherAllowance": h.otherAllowance,
+            "monthlyWorkingHour": h.monthlyWorkingHour,
+            "monthlyOvertime": h.monthlyOvertime,
+            "dailyWorkingHour": h.dailyWorkingHour,
+            "breakTime": h.breakTime,
+            "hourlyWage": h.hourlyWage,
+            "monthlyBasicSalary": h.monthlyBasicSalary,
+            "monthlyOvertimeAllowance": h.monthlyOvertimeAllowance,
+            "monthlyTotalWorkingHour": h.monthlyTotalWorkingHour
         }
         humans.append(data)
     return jsonify(humans)
+
 
 
 if __name__ == '__main__':

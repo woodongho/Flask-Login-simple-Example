@@ -1,7 +1,47 @@
 {% extends "base.html" %}
 {% block content %}
 {% if session['logged_in'] %}
+
 <script>
+
+	// let companyid = {{ session['company_id']}}
+	// $(document).ready(function () {
+	// 	$.ajax({
+	// 		type: 'GET',
+	// 		url: '/users/' + companyid + '/companyName',
+	// 		success: function (response) {
+	// 			let companyName_html = ''
+	// 			for (let i = 0; i < response.length; i++) {
+	// 				let user = response[i]
+	// 				companyName_html += '"' + user.id + '">' + user.cName + '</option>'
+	// 			}
+	// 			console.log(companyName_html)
+	// 			$('#company-name').append(companyName_html)
+	// 		}
+	// 	});
+	// })
+
+	// let companyname = {{ session['cName']}}
+
+
+	// let companyname = {{ session['company_name']}}
+	// $(document).ready(function () {
+	// 	$.ajax({
+	// 		type: 'GET',
+	// 		url: '/users/companyName',
+	// 		success: function (response) {
+	// 			let companyName_html = ''
+	// 			for (let i = 0; i < response.length; i++) {
+	// 				let user = response[i]
+	// 				companyName_html += user.cName
+	// 			}
+	// 			console.log(companyName_html)
+	// 			$('#company-name').append(companyName_html)
+	// 		}
+	// 	});
+	// })
+
+
 	let userId = {{ session['user_id']}}
 	$(document).ready(function () {
 		$.ajax({
@@ -17,23 +57,38 @@
 				$('#select-human').append(option_html)
 			}
 		});
-
 	})
+
+	let Position = {{ session["position"]}}
+	$(document).ready(function () {
+		$.ajax({
+			type: 'GET',
+			url: '/users/' + Position + '/humans',
+			success: function (response) {
+				let position_html = ''
+				for (let i = 0; i < response.length; i++) {
+					let human = response[i]
+					option_html += '"' + human.postion + '"'
+				}
+				console.log(position_html)
+				$('#human-position').append(position_html)
+			}
+		});
+	})
+
+
 </script>
 
 {% if data %}
 <h3>{{data}}</h3>
 {% else %}
-<div class="jumbotron"></div>
+<br>
 <div class="wrapped">
 	<h3 class="display-4 align-center"><u>근로계약서</u></h3>
 	<hr class="my-4">
 	<h5>
-		<p>&nbsp;&nbsp; (이하 “갑”이라 한다)와 근로자 <div class="btn-group">
-				<select id="select-human">
-
-				</select>
-			</div>(이하 “을”이라 한다)은 다음과 같은 조건으로 근로계약을 체결하고,
+		<p>&nbsp;&nbsp;(이하 “갑”이라 한다)와 근로자 <select class="custom-select box_size2" id="select-human">
+			</select>(이하 “을”이라 한다)은 다음과 같은 조건으로 근로계약을 체결하고,
 			상호신의의 원칙하에 성실하게 이행, 준수할 것을 서약하며, 이를 증명하기 위하여
 			본 계약서를 각1부씩 보관한다.</p><br>
 		<p class="align-center">- 다 음 -</p><br>
@@ -41,7 +96,7 @@
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;① <u> </u> 부터 기한의 정함이 없는 근로계약을 체결한 것으로 한다.</p>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;② 신규로 채용된 자는 입사한 날부터 3개월간을 수습기간으로 한다.</p><br>
 		<p>제2조 (근무장소 및 종사할 업무)</p>
-		<p>&nbsp;&nbsp;&nbsp;&nbsp;① 근무장소(부서, 직책) : <u>사업장소재지</u>,&nbsp;&nbsp;&nbsp;&nbsp;
+		<p>&nbsp;&nbsp;&nbsp;&nbsp;① 근무장소(부서, 직책) : <u>사업장소재지, <span id="human-position"></span></u>,&nbsp;&nbsp;&nbsp;&nbsp;
 			<u> </u> </p>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;② 업무의 내용 : <u> </u></p>
 		<p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;단, “갑”은 업무의 필요에 따라 “을”의 업무내용을 변경할 수 있다.</p><br>
