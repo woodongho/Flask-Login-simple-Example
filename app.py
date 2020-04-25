@@ -183,6 +183,17 @@ def logout():
     return redirect(url_for('home'))
 
 
+@app.route("/users/<id>/humans")
+def get_humans(id):
+    human_data = Human.query.filter_by(user_id=id).all()
+    humans = []
+    for h in human_data:
+        data = {
+            "id": h.Registration_id,
+            "name": h.name
+        }
+        humans.append(data)
+    return jsonify(humans)
 
 
 if __name__ == '__main__':
