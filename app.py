@@ -255,6 +255,14 @@ def get_humans(id):
     return jsonify(humans)
 
 
+@app.route("/users/<user_id>/humans/<human_id>")
+def get_human(user_id, human_id):
+    human = Human.query.filter_by(Registration_id=human_id).first()
+    data = {
+        "position": human.position
+    }
+    return jsonify({'data': data})
+
 
 if __name__ == '__main__':
     app.debug = True
